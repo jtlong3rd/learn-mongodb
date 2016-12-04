@@ -21,7 +21,7 @@ const mongo = require('mongodb').MongoClient;
 const dbName = process.argv[2];
 const url = `mongodb://localhost:27017/${dbName}`;
 
-mongo.connect(url, function(err, db) {
+mongo.connect(url).then(db => {
   db.collection('users')
     .update(
       { name: 'Tina' },
