@@ -30,7 +30,7 @@ const mongo = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017/learnyoumongo';
 const size = process.argv[2];
 
-mongo.connect(url, function(err, db) {
+mongo.connect(url).then(db => {
   db.collection('prices')
     .aggregate([
       { $match: { size } },
