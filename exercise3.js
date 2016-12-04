@@ -19,7 +19,7 @@ mongo.connect(url).then(db => {
   db.collection('parrots')
     .find({ age: { $gt: ageBound } })
     .toArray()
-    .then(oldParrots => console.log(oldParrots));
+    .then(console.log);
 
   db.close();
 });
