@@ -16,8 +16,7 @@ const url = 'mongodb://localhost:27017/learnyoumongo';
 const ageBound = +process.argv[2];
 
 mongo.connect(url, function(err, db) {
-  const oldParrots = db
-    .collection('parrots')
+  db.collection('parrots')
     .find({ age: { $gt: ageBound } })
     .toArray()
     .then(oldParrots => console.log(oldParrots));
