@@ -15,7 +15,7 @@ const collectionName = process.argv[3];
 const _id = process.argv[4];
 const url = `mongodb://localhost:27017/${dbName}`;
 
-mongo.connect(url, function(err, db) {
+mongo.connect(url).then(db => {
   db.collection(collectionName)
     .remove({ _id });
 
