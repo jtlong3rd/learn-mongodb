@@ -24,10 +24,10 @@ const firstName = process.argv[2];
 const lastName = process.argv[3];
 const newDoc = { firstName, lastName };
 
-mongo.connect(url, function(err, db) {
+mongo.connect(url).then(db => {
   db.collection('docs')
     .insert(newDoc)
-    .then(results => console.log(JSON.stringify(newDoc)));
+    .then(() => console.log(JSON.stringify(newDoc)));
 
   db.close();
 });
