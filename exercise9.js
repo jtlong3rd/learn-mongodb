@@ -38,7 +38,7 @@ mongo.connect(url, function(err, db) {
       { $group: { _id: "$size", average_price: { $avg: "$price"} } }
     ])
     .toArray()
-    .then(result => console.log(result[0].average_price.toFixed(2)));
+    .then(([{ average_price }]) => console.log(average_price.toFixed(2)));
 
   db.close();
 });
